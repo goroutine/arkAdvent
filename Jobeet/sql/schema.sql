@@ -36,6 +36,7 @@ CREATE TABLE jobeet_job (
   expires_at DATETIME NOT NULL,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
+  hhogehogheoghe VARCHAR(255) NOT NULL,
   FOREIGN KEY (category_id) REFERENCES jobeet_category(id) ON UPDATE CASCADE
 );
 
