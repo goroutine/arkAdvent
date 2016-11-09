@@ -12,8 +12,19 @@ __PACKAGE__->table('jobeet_job');
 __PACKAGE__->add_columns(
     id => PK_INTEGER,
     category_id => INTEGER,
-    type => VARCHAR,
+    type => VARCHAR(
+        is_nullable => 1
+    ),
     position => VARCHAR,
+    company => VARCHAR(
+        is_nullable => 1
+    ),
+    logo => VARCHAR(
+        is_nullable => 1
+    ),
+    url => VARCHAR(
+        is_nullable => 1
+    ),
     location => VARCHAR,
     description => {
         data_type   => 'TEXT',
