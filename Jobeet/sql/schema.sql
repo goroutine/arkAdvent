@@ -18,6 +18,11 @@ CREATE TABLE jobeet_category (
 
 CREATE UNIQUE INDEX jobeet_category_name ON jobeet_category (name);
 
+CREATE TABLE jobeet_something (
+  json_column1 VARCHAR(255) NOT NULL,
+  json_column2 VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE jobeet_job (
   id INTEGER PRIMARY KEY NOT NULL,
   category_id INTEGER NOT NULL,
@@ -36,7 +41,6 @@ CREATE TABLE jobeet_job (
   expires_at DATETIME NOT NULL,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
-  hhogehogheoghe VARCHAR(255) NOT NULL,
   FOREIGN KEY (category_id) REFERENCES jobeet_category(id) ON UPDATE CASCADE
 );
 

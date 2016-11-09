@@ -41,7 +41,7 @@ __PACKAGE__->add_columns(
     expires_at => DATETIME,
     created_at => DATETIME,
     updated_at => DATETIME,
-    hhogehogheoghe => VARCHAR,
+#    hhogehogheoghe => VARCHAR,
 
 );
 __PACKAGE__->set_primary_key('id');
