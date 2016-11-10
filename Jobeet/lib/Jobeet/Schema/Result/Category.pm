@@ -20,6 +20,7 @@ __PACKAGE__->has_many( jobs => 'Jobeet::Schema::Result::Job', 'category_id',
         is_foreign_key_constraint   => 0,
         cascade_delete              => 0,
     }, );
+
 __PACKAGE__->has_many(
     category_affiliate => 'Jobeet::Schema::Result::CategoryAffiliate', 'category_id');
 
