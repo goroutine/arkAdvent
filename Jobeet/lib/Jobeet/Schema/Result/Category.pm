@@ -14,8 +14,9 @@ sub get_active_jobs {
     
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },
-        { order_by => { -desc => 'created_at' } },
-        rows  => $attr->{rows},
+        { order_by => { -desc => 'created_at' },
+                  rows  => $attr->{rows},
+        }
     );
 }
 
