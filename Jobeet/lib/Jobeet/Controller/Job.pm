@@ -6,12 +6,14 @@ use Jobeet::Models;
 sub index :Path {
     my ($self, $c) = @_;
 
-    $c->stash->{jobs} = models('Schema::Job');
+#    $c->stash->{jobs} = models('Schema::Job')->get_active_jobs;
+    $c->stash->{categories} = models('Schema::Category')->get_with_jobs;
+    warn "aaa". models('Schema::Category')->get_with_jobs;
 }
 
 # /job/{job_token} (詳細ページ)
 sub show :Path :Args(1) {
-    my($self, $c, $job_token) = @_;
+    my ($self, $c, $job_token) = @_;
 }
 
 # /job/create (新規作成)

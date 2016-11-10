@@ -4,6 +4,14 @@ use strict;
 use warnings;
 use parent 'Jobeet::Schema::ResultBase';
 use Jobeet::Schema::Types;
+use Jobeet::Models;
+
+sub insert {
+    my $self = shift;
+
+    $self->expires_at( models('Schema')->now->add( days => models('conf')->{active_days} ) );
+    $self->next::method(@_);
+}
 
 # ここにテーブル定義を書く
 
@@ -42,12 +50,14 @@ __PACKAGE__->add_columns(
     created_at => DATETIME,
     updated_at => DATETIME,
 #    hhogehogheoghe => VARCHAR,
+    );
 
-);
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint(['token']);
 
 __PACKAGE__->belongs_to( category => 'Jobeet::Schema::Result::Category', 'category_id' );
+
+
 
 1;
 
