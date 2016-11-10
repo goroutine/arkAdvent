@@ -14,7 +14,7 @@ CREATE UNIQUE INDEX jobeet_affiliate_email ON jobeet_affiliate (email);
 CREATE TABLE jobeet_category (
   id INTEGER PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  slug VARCHAR(255)
+  slug VARCHAR(255) NOT NULL
 );
 
 CREATE UNIQUE INDEX jobeet_category_name ON jobeet_category (name);

@@ -5,19 +5,37 @@ use warnings;
 use parent 'Jobeet::Schema::ResultBase';
 use Jobeet::Schema::Types;
 use Jobeet::Models;
+use String::CamelCase qw(decamelize);
 
 sub get_active_jobs {
     my $self = shift;
     my $attr = shift || {};
-
-    $attr->{rows} ||= 10;
     
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },
         { order_by => { -desc => 'created_at' },
-                  rows  => $attr->{rows},
+          defined $attr->{rows} ? (rows  => $attr->{rows}) : (),
+          defined $attr->{page} ? (page => $attr->{page}) : (),
         }
     );
+}
+
+sub insert {
+    my $self = shift;
+
+    $self->slug( decamelize $self->name );
+
+    $self->next::method(@_);
+}
+
+sub update {
+    my $self = shift;
+
+    if ($self->is_column_changed('name')) {
+        $self->slug( decamelize $self->name );
+    }
+
+    $self->next::method(@_);
 }
 
 __PACKAGE__->table('jobeet_category');
@@ -26,7 +44,7 @@ __PACKAGE__->add_columns(
     id => PK_INTEGER,
     name => VARCHAR,
     slug => VARCHAR(
-        is_nullable => 1,
+        is_nullable => 0,
     ),
 );
 

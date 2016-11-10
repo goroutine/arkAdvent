@@ -11,5 +11,6 @@ return {
     default_view    => 'MT',
     active_days     => 30,
     max_jobs_on_homepage => 10,
+    max_jobs_on_category => 20,
 };
 
