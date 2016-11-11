@@ -5,6 +5,7 @@ requires 'Data::Page::Navigation';
 requires 'Data::UUID';
 requires 'DateTime';
 requires 'DateTime::Format::SQLite';
+requires 'DateTime::Format::W3CDTF';
 requires 'DBIx::Class';
 requires 'Digest::SHA1';
 requires 'FindBin::libs';
