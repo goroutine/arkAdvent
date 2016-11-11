@@ -1,5 +1,6 @@
 package Jobeet::Controller::Job;
 use Ark 'Controller';
+with 'Ark::ActionClass::Form';
 
 use Jobeet::Models;
 
@@ -17,8 +18,10 @@ sub show :Path :Args(1) {
 }
 
 # /job/create (新規作成)
-sub create :Local {
+sub create :Local :Form('Jobeet::Form::Job') {
     my ($self, $c) = @_;
+
+    $c->stash->{form} = $self->form;
 }
 
 # これは何をやっているんだ？？？
