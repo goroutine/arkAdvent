@@ -23,4 +23,5 @@ cpanfile.snapshot
 css/
 images/
 .DS_Store
-Jobeet/tmp/cache
+tmp/cache
+database.db
