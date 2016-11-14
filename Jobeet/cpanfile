@@ -10,6 +10,7 @@ requires 'DBIx::Class';
 requires 'Digest::SHA1';
 requires 'FindBin::libs';
 requires 'File::Temp';
+requires 'JSON::Any';
 requires 'SQL::Translator';
 requires 'String::CamelCase';
 requires 'Test::More';
